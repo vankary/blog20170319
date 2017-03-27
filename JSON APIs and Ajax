@@ -1,0 +1,54 @@
+Trigger Click Events with jQuery 
+
+Get data from APIs(Application Programming Interfaces)
+
+$(document).ready(){                                    
+
+  $("#getMessage").on("click",function(){               //click event handler 点击触发的事件
+  
+    $(".message").html("Here is the message");          //Change Text with Click Events 更改文字内容
+    
+    });   
+  });
+});
+ 
+
+
+Get JSON with the jQuery get JSON method 用jQuery获得JSON的方法
+
+$.getJSON("/json/cats.json",function(json){           //从/json/cat.json里提取GetJSON
+  
+  $(".message").html(JSON.stringify(json));
+  
+});
+
+Convert JSON Data to HTML                             //JSON转换到HTML
+
+var html = "";                                        //先弄一个html的变量，内容为空；
+
+json.forEach(function(val){                           // .forEach()开始全部都是
+  var keys = Object.keys(val);
+  html += "<div class= 'cat'>";
+  keys.forEach(function(key){
+    html += "<strong>" + key + "</strong>: " + val[key] + "<br>";
+  });
+  html += "</div><br>";
+});
+
+
+Render images from data sources                       //从 data 源头提取图像
+html += "<img src = '" + val.imageLink + "' " + "alt='" + val.altText + "'>";
+
+Prefilter JSON                                        //JSON过滤器 
+json = json.filter(function(val){
+  return (val.id !== 1);
+  });
+  
+  
+  Get Geolocation data                            //得到定位data
+  if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    $("#data").html("latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude);
+  });
+}
+  
